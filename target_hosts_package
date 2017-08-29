@@ -1,0 +1,14 @@
+#Configure the operating system (Ubuntu)
+#run this script from root console
+apt-get update
+apt-get dist-upgrade
+halt --reboot
+uname -r
+#make sure the kernel version  is 3.13.0-34-generic or later:
+apt-get install bridge-utils debootstrap ifenslave ifenslave-2.6 lsof lvm2 ntp ntpdate openssh-server sudo tcpdump vlan
+echo 'bonding' >> /etc/modules
+echo '8021q' >> /etc/modules
+
+#enable NTP service
+systemctl enable ntp.service
+systemctl start ntp.service
